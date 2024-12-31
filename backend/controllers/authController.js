@@ -3,6 +3,7 @@ import bcryptjs from "bcryptjs"
 import { errorHandler } from "../utils/error.js";
 import { JWT_SECRET } from "../config/index.js";
 import jwt from "jsonwebtoken"
+
 export const register = async (req,res,next) => {
     const {username,email,password} = req.body;
        if (!username || !email || !password) {
@@ -43,6 +44,9 @@ export const login  = async (req,res,next) => {
         })
 
     } catch (error) {
-        
+        next(error)
     }
-}
+};
+
+
+
